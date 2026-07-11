@@ -80,46 +80,6 @@ const reviews = ref<Review[]>([
     date: 'Fall 2025'
   }
 ])
-
-// Leave a review form state
-const reviewForm = ref({
-  name: '',
-  location: '',
-  rating: 5,
-  text: ''
-})
-const isReviewSubmitted = ref(false)
-const isSubmittingReview = ref(false)
-
-const handleReviewSubmit = () => {
-  if (!reviewForm.value.name || !reviewForm.value.text) {
-    alert('Please fill in your name and review message.')
-    return
-  }
-  
-  isSubmittingReview.value = true
-  setTimeout(() => {
-    reviews.value.unshift({
-      name: reviewForm.value.name,
-      location: reviewForm.value.location || 'Local Neighbor',
-      rating: reviewForm.value.rating,
-      text: reviewForm.value.text,
-      date: 'Just now'
-    })
-    isSubmittingReview.value = false
-    isReviewSubmitted.value = true
-  }, 800)
-}
-
-const resetReviewForm = () => {
-  reviewForm.value = {
-    name: '',
-    location: '',
-    rating: 5,
-    text: ''
-  }
-  isReviewSubmitted.value = false
-}
 </script>
 
 <template>
@@ -297,77 +257,6 @@ const resetReviewForm = () => {
               <span class="review-date">• {{ review.date }}</span>
             </div>
           </div>
-        </div>
-
-        <!-- Write a Review Form -->
-        <div class="write-review-container glass-card">
-          <div v-if="isReviewSubmitted" class="success-state">
-            <span class="success-icon">💚</span>
-            <h3>Thank You for Your Feedback!</h3>
-            <p>Your review has been successfully added to our community board. We appreciate your support!</p>
-            <button @click="resetReviewForm" class="btn btn-primary" id="btn-review-reset">Write Another Review</button>
-          </div>
-
-          <form v-else @submit.prevent="handleReviewSubmit" id="form-home-review">
-            <h3>Share Your Experience</h3>
-            <p class="form-desc">Loved Nana's fried pies or our ferns? Let your neighbors know!</p>
-            
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="review-input-name">Name *</label>
-                <input 
-                  id="review-input-name" 
-                  type="text" 
-                  v-model="reviewForm.name" 
-                  class="form-input" 
-                  placeholder="Your name" 
-                  required 
-                />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="review-input-loc">Location</label>
-                <input 
-                  id="review-input-loc" 
-                  type="text" 
-                  v-model="reviewForm.location" 
-                  class="form-input" 
-                  placeholder="E.g., Gardendale, AL" 
-                />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="review-select-rating">Rating</label>
-              <select id="review-select-rating" v-model="reviewForm.rating" class="form-select rating-select">
-                <option value="5">★★★★★ (5 Stars)</option>
-                <option value="4">★★★★☆ (4 Stars)</option>
-                <option value="3">★★★☆☆ (3 Stars)</option>
-                <option value="2">★★☆☆☆ (2 Stars)</option>
-                <option value="1">★☆☆☆☆ (1 Star)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="review-textarea-text">Your Review *</label>
-              <textarea 
-                id="review-textarea-text" 
-                v-model="reviewForm.text" 
-                class="form-textarea" 
-                rows="3" 
-                placeholder="What did you buy? How was your experience?" 
-                required
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              class="btn btn-accent w-full" 
-              :disabled="isSubmittingReview"
-              id="btn-review-submit"
-            >
-              {{ isSubmittingReview ? 'Submitting...' : 'Submit Review' }}
-            </button>
-          </form>
         </div>
       </div>
     </section>
@@ -889,45 +778,7 @@ const resetReviewForm = () => {
   font-weight: 500;
 }
 
-.write-review-container {
-  max-width: 600px;
-  margin: 48px auto 0;
-  padding: 32px;
-}
 
-.write-review-container h3 {
-  font-size: 20px;
-  color: var(--color-brand);
-  margin-bottom: 6px;
-}
-
-.rating-select {
-  color: var(--color-honey);
-  font-weight: 600;
-}
-
-.success-state {
-  text-align: center;
-  padding: 32px 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.success-icon {
-  font-size: 64px;
-}
-
-.success-state h3 {
-  color: var(--color-brand);
-  font-size: 24px;
-}
-
-.success-state p {
-  margin-bottom: 16px;
-  font-size: 14px;
-}
 
 /* Location Summary */
 .location-summary-section {
