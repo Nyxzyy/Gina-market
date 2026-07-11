@@ -48,7 +48,7 @@
         <ul class="contact-list">
           <li>
             <span class="contact-icon">📍</span>
-            <a href="https://maps.google.com/?q=2531+Snow+Rogers+Road,+Gardendale,+AL+35071" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.google.com/maps/place/Gina's+Market/@33.6854538,-86.8198175,17z/data=!4m6!3m5!1s0x888906b512ed91e9:0xef55a8be20f5b5bd!8m2!3d33.6854758!4d-86.8196571!16s%2Fg%2F11bwgwbtdl?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
               2531 Snow Rogers Road<br>Gardendale, AL 35071
             </a>
           </li>

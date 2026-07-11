@@ -274,7 +274,7 @@ const reviews = ref<Review[]>([
               loading="lazy" 
               allowfullscreen 
               referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=2531%20Snow%20Rogers%20Road,%20Gardendale,%20AL%2035071&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=33.6854758,-86.8196571&t=&z=17&ie=UTF8&iwloc=&output=embed"
             ></iframe>
           </div>
         </div>

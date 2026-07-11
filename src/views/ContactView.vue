@@ -109,10 +109,10 @@ const resetForm = () => {
                 loading="lazy" 
                 allowfullscreen 
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://maps.google.com/maps?q=2531%20Snow%20Rogers%20Road,%20Gardendale,%20AL%2035071&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=33.6854758,-86.8196571&t=&z=17&ie=UTF8&iwloc=&output=embed"
               ></iframe>
             </div>
-            <a href="https://maps.google.com/?q=2531+Snow+Rogers+Road,+Gardendale,+AL+35071" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full" id="btn-contact-external-map">
+            <a href="https://www.google.com/maps/place/Gina's+Market/@33.6854538,-86.8198175,17z/data=!4m6!3m5!1s0x888906b512ed91e9:0xef55a8be20f5b5bd!8m2!3d33.6854758!4d-86.8196571!16s%2Fg%2F11bwgwbtdl?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full" id="btn-contact-external-map">
               Open in Google Maps
             </a>
           </div>
