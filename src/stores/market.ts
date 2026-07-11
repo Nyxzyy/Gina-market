@@ -16,34 +16,6 @@ export const useMarketStore = defineStore('market', () => {
   const products = ref<Product[]>([
     { 
       id: '1', 
-      name: 'Ferns & Hanging Baskets', 
-      category: 'plants', 
-      seasons: ['spring', 'summer'], 
-      description: 'Gorgeous, lush green ferns perfect for porches and patios.', 
-      icon: '🌿', 
-      badge: 'Popular',
-      image: 'https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '2', 
-      name: 'Hibiscus Flowers', 
-      category: 'plants', 
-      seasons: ['spring', 'summer'], 
-      description: 'Vibrant tropical hibiscus in multiple colors.', 
-      icon: '🌺',
-      image: 'https://images.unsplash.com/photo-1550950158-d0d960dff51b?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '3', 
-      name: 'Dipladenia & Bedding Plants', 
-      category: 'plants', 
-      seasons: ['spring'], 
-      description: 'Climbing vines and colorful starter bedding plants.', 
-      icon: '🌸',
-      image: 'https://images.unsplash.com/photo-1507502707541-f369a3b18502?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '4', 
       name: 'Vine-Ripened Tomatoes', 
       category: 'produce', 
       seasons: ['summer'], 
@@ -53,16 +25,7 @@ export const useMarketStore = defineStore('market', () => {
       image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80'
     },
     { 
-      id: '5', 
-      name: 'Squash & Zucchini', 
-      category: 'produce', 
-      seasons: ['summer'], 
-      description: 'Tender squash and zucchini perfect for grilling.', 
-      icon: '🥒',
-      image: 'https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '6', 
+      id: '2', 
       name: 'Sweet Corn', 
       category: 'produce', 
       seasons: ['summer'], 
@@ -71,17 +34,137 @@ export const useMarketStore = defineStore('market', () => {
       image: 'https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80'
     },
     { 
+      id: '3', 
+      name: 'Cucumbers', 
+      category: 'produce', 
+      seasons: ['spring', 'summer'], 
+      description: 'Crisp and refreshing green cucumbers, ideal for salads or pickling.', 
+      icon: '🥒',
+      image: 'https://images.unsplash.com/photo-1604975701397-6365ccbd019a?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '4', 
+      name: 'Potatoes', 
+      category: 'produce', 
+      seasons: ['spring', 'summer', 'fall'], 
+      description: 'Quality baking, sweet, and new red potatoes.', 
+      icon: '🥔',
+      image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '5', 
+      name: 'Bell Peppers', 
+      category: 'produce', 
+      seasons: ['summer'], 
+      description: 'Vibrant and crunchy green, yellow, and red bell peppers.', 
+      icon: '🫑',
+      image: 'https://images.unsplash.com/photo-1563513303704-a0975e8f1ecb?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '6', 
+      name: 'Hot Peppers', 
+      category: 'produce', 
+      seasons: ['summer'], 
+      description: 'Fresh and spicy jalapenos, habaneros, and chili peppers.', 
+      icon: '🌶️',
+      image: 'https://images.unsplash.com/photo-1588252303782-cb80119cb665?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
       id: '7', 
-      name: 'Nana\'s Fried Pies', 
+      name: 'Onions', 
+      category: 'produce', 
+      seasons: ['spring', 'summer', 'fall'], 
+      description: 'Sweet yellow onions, red onions, and scallions.', 
+      icon: '🧅',
+      image: 'https://images.unsplash.com/photo-1508747703725-719777637510?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '8', 
+      name: 'Lettuce', 
+      category: 'produce', 
+      seasons: ['spring', 'fall'], 
+      description: 'Freshly harvested romaine, butterhead, and crisp leaf lettuce.', 
+      icon: '🥬',
+      image: 'https://images.unsplash.com/photo-1622484211148-716598e04143?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '9', 
+      name: 'Strawberries', 
+      category: 'fruit', 
+      seasons: ['spring'], 
+      description: 'Sweet, juicy, locally picked red strawberries.', 
+      icon: '🍓',
+      badge: 'Spring Treat',
+      image: 'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '10', 
+      name: 'Peaches', 
+      category: 'fruit', 
+      seasons: ['summer'], 
+      description: 'Sweet and fragrant tree-ripened southern peaches.', 
+      icon: '🍑',
+      badge: 'Popular',
+      image: 'https://images.unsplash.com/photo-1626808642875-0aa5454f2ef8?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '11', 
+      name: 'Watermelon', 
+      category: 'fruit', 
+      seasons: ['summer'], 
+      description: 'Crisp, sweet, and refreshing icebox and seedless watermelons.', 
+      icon: '🍉',
+      image: 'https://images.unsplash.com/photo-1589984662646-e7b2e4962f18?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '12', 
+      name: 'Cantaloupe', 
+      category: 'fruit', 
+      seasons: ['summer'], 
+      description: 'Deliciously sweet and fragrant local cantaloupes.', 
+      icon: '🍈',
+      image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '13', 
+      name: 'Blueberries', 
+      category: 'fruit', 
+      seasons: ['spring', 'summer'], 
+      description: 'Freshly plucked, antioxidant-rich sweet blueberries.', 
+      icon: '🫐',
+      image: 'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '14', 
+      name: 'Fresh Honey', 
+      category: 'specialties', 
+      seasons: ['spring', 'summer', 'fall'], 
+      description: 'Pure, raw local Alabama honey.', 
+      icon: '🍯',
+      image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '15', 
+      name: 'Farm Eggs', 
+      category: 'specialties', 
+      seasons: ['spring', 'summer', 'fall'], 
+      description: 'Freshly gathered brown eggs from local cage-free chickens.', 
+      icon: '🥚',
+      badge: 'Farm Fresh',
+      image: 'https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=600&q=80'
+    },
+    { 
+      id: '16', 
+      name: 'Homemade Pie', 
       category: 'specialties', 
       seasons: ['spring', 'summer', 'fall'], 
       description: 'Famous hand-made fried pies in apple, peach, and other seasonal fillings.', 
       icon: '🥧', 
-      badge: 'Best Seller',
+      badge: 'Nana\'s Best',
       image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80'
     },
     { 
-      id: '8', 
+      id: '17', 
       name: 'Boiled Peanuts', 
       category: 'specialties', 
       seasons: ['spring', 'summer', 'fall'], 
@@ -90,40 +173,14 @@ export const useMarketStore = defineStore('market', () => {
       image: 'https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=600&q=80'
     },
     { 
-      id: '9', 
-      name: 'Fresh Local Honey', 
-      category: 'specialties', 
-      seasons: ['spring', 'summer', 'fall'], 
-      description: 'Pure, raw local Alabama honey.', 
-      icon: '🍯',
-      image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '10', 
-      name: 'Chow Chow & Pickles', 
-      category: 'specialties', 
-      seasons: ['spring', 'summer', 'fall'], 
-      description: 'Homemade sweet & spicy chow chow, pickled beets, salsa, and pickled eggs.', 
-      icon: '🫙',
-      image: 'https://images.unsplash.com/photo-1601000938259-9e92002320b2?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '11', 
-      name: 'Fresh Peaches & Strawberries', 
-      category: 'fruit', 
+      id: '18', 
+      name: 'Bedding Flowers & Baskets', 
+      category: 'plants', 
       seasons: ['spring', 'summer'], 
-      description: 'Sweet seasonal fruits picked at their peak.', 
-      icon: '🍑',
-      image: 'https://images.unsplash.com/photo-1541256996761-85df2effaa16?auto=format&fit=crop&w=600&q=80'
-    },
-    { 
-      id: '12', 
-      name: 'Autumn Apples', 
-      category: 'fruit', 
-      seasons: ['fall'], 
-      description: 'Crisp autumn apples and zesty citrus fruits.', 
-      icon: '🍎',
-      image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?auto=format&fit=crop&w=600&q=80'
+      description: 'Fern hanging baskets, hibiscus, and starter bedding plants.', 
+      icon: '🌻',
+      badge: 'Porch Ready',
+      image: 'https://images.unsplash.com/photo-1507502707541-f369a3b18502?auto=format&fit=crop&w=600&q=80'
     }
   ])
 
