@@ -7,13 +7,38 @@ interface FeaturedProduct {
   icon: string
   description: string
   badge?: string
+  image: string
 }
 
 const featuredProducts = ref<FeaturedProduct[]>([
-  { name: 'Ferns & Hanging Baskets', icon: '🌿', description: 'Gorgeous, lush green ferns perfect for porches and patios.', badge: 'Popular' },
-  { name: 'Vine-Ripened Tomatoes', icon: '🍅', description: 'Sweet, juicy, locally-grown garden tomatoes.', badge: 'Fresh Crop' },
-  { name: 'Nana\'s Fried Pies', icon: '🥧', description: 'Famous hand-made fried pies in apple, peach, and other seasonal fillings.', badge: 'Best Seller' },
-  { name: 'Fresh Local Honey', icon: '🍯', description: 'Pure, raw local Alabama honey.', badge: 'Local Farm' }
+  { 
+    name: 'Ferns & Hanging Baskets', 
+    icon: '🌿', 
+    description: 'Gorgeous, lush green ferns perfect for porches and patios.', 
+    badge: 'Popular',
+    image: 'https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&w=600&q=80'
+  },
+  { 
+    name: 'Vine-Ripened Tomatoes', 
+    icon: '🍅', 
+    description: 'Sweet, juicy, locally-grown garden tomatoes.', 
+    badge: 'Fresh Crop',
+    image: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=600&q=80'
+  },
+  { 
+    name: 'Nana\'s Fried Pies', 
+    icon: '🥧', 
+    description: 'Famous hand-made fried pies in apple, peach, and other seasonal fillings.', 
+    badge: 'Best Seller',
+    image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80'
+  },
+  { 
+    name: 'Fresh Local Honey', 
+    icon: '🍯', 
+    description: 'Pure, raw local Alabama honey.', 
+    badge: 'Local Farm',
+    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80'
+  }
 ])
 </script>
 
@@ -125,12 +150,17 @@ const featuredProducts = ref<FeaturedProduct[]>([
             :key="product.name" 
             class="product-card glass-card"
           >
-            <div class="product-header">
-              <span class="product-icon">{{ product.icon }}</span>
+            <div class="product-image-container">
+              <img :src="product.image" :alt="product.name" class="product-card-image" />
               <span v-if="product.badge" class="badge badge-accent product-badge">{{ product.badge }}</span>
             </div>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
+            <div class="product-body">
+              <div class="product-title-row">
+                <span class="product-icon">{{ product.icon }}</span>
+                <h3>{{ product.name }}</h3>
+              </div>
+              <p>{{ product.description }}</p>
+            </div>
           </div>
         </div>
 
@@ -484,28 +514,66 @@ const featuredProducts = ref<FeaturedProduct[]>([
 }
 
 .product-card {
+  padding: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 12px;
 }
 
-.product-header {
+.product-image-container {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.04);
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-body {
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.product-title-row {
+  display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .product-icon {
-  font-size: 32px;
+  font-size: 24px;
 }
 
-.product-card h3 {
+.product-body h3 {
   font-size: 18px;
+  color: var(--color-brand);
 }
 
-.product-card p {
+.product-body p {
   font-size: 14px;
   color: var(--color-text-secondary);
+  line-height: 1.6;
 }
 
 .catalog-cta {

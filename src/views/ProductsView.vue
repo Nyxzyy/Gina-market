@@ -99,23 +99,28 @@ const filteredProducts = computed(() => {
             :key="product.id" 
             class="product-card glass-card"
           >
-            <div class="product-header">
-              <span class="product-icon">{{ product.icon }}</span>
+            <div class="product-image-container">
+              <img :src="product.image" :alt="product.name" class="product-card-image" />
               <span v-if="product.badge" class="badge badge-accent product-badge">{{ product.badge }}</span>
             </div>
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            <div class="product-footer">
-              <div class="product-seasons">
-                <span 
-                  v-for="season in product.seasons" 
-                  :key="season" 
-                  :class="['season-tag', season]"
-                >
-                  {{ season }}
-                </span>
+            <div class="product-body">
+              <div class="product-title-row">
+                <span class="product-icon">{{ product.icon }}</span>
+                <h3>{{ product.name }}</h3>
               </div>
-              <span class="avail-indicator">● Seasonal</span>
+              <p>{{ product.description }}</p>
+              <div class="product-footer">
+                <div class="product-seasons">
+                  <span 
+                    v-for="season in product.seasons" 
+                    :key="season" 
+                    :class="['season-tag', season]"
+                  >
+                    {{ season }}
+                  </span>
+                </div>
+                <span class="avail-indicator">● Seasonal</span>
+              </div>
             </div>
           </div>
         </div>
@@ -292,26 +297,63 @@ const filteredProducts = computed(() => {
 }
 
 .product-card {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card-image {
+  transform: scale(1.04);
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.product-body {
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  flex-grow: 1;
 }
 
-.product-header {
+.product-title-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 8px;
 }
 
 .product-icon {
-  font-size: 32px;
+  font-size: 24px;
 }
 
-.product-card h3 {
+.product-body h3 {
   font-size: 18px;
+  color: var(--color-brand);
 }
 
-.product-card p {
+.product-body p {
   font-size: 14px;
   line-height: 1.6;
   flex-grow: 1;
