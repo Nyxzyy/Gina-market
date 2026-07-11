@@ -40,7 +40,7 @@ export const useMarketStore = defineStore('market', () => {
       seasons: ['spring', 'summer'], 
       description: 'Crisp and refreshing green cucumbers, ideal for salads or pickling.', 
       icon: '🥒',
-      image: 'https://images.unsplash.com/photo-1604975701397-6365ccbd019a?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '4', 
@@ -58,7 +58,7 @@ export const useMarketStore = defineStore('market', () => {
       seasons: ['summer'], 
       description: 'Vibrant and crunchy green, yellow, and red bell peppers.', 
       icon: '🫑',
-      image: 'https://images.unsplash.com/photo-1563513303704-a0975e8f1ecb?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1621953723422-6023013f659d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '6', 
@@ -67,7 +67,7 @@ export const useMarketStore = defineStore('market', () => {
       seasons: ['summer'], 
       description: 'Fresh and spicy jalapenos, habaneros, and chili peppers.', 
       icon: '🌶️',
-      image: 'https://images.unsplash.com/photo-1588252303782-cb80119cb665?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1526346698789-22fd84314424?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '7', 
@@ -85,7 +85,7 @@ export const useMarketStore = defineStore('market', () => {
       seasons: ['spring', 'fall'], 
       description: 'Freshly harvested romaine, butterhead, and crisp leaf lettuce.', 
       icon: '🥬',
-      image: 'https://images.unsplash.com/photo-1622484211148-716598e04143?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1549736624-81a2ca809ad7?q=80&w=867&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '9', 
@@ -105,7 +105,7 @@ export const useMarketStore = defineStore('market', () => {
       description: 'Sweet and fragrant tree-ripened southern peaches.', 
       icon: '🍑',
       badge: 'Popular',
-      image: 'https://images.unsplash.com/photo-1626808642875-0aa5454f2ef8?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1639588473831-dd9d014646ae?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '11', 
@@ -170,7 +170,7 @@ export const useMarketStore = defineStore('market', () => {
       seasons: ['spring', 'summer', 'fall'], 
       description: 'Warm, salty southern-style boiled peanuts.', 
       icon: '🥜',
-      image: 'https://images.unsplash.com/photo-1567894340315-735d7c361db0?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1724058663142-e6e1a5e89f2d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     },
     { 
       id: '18', 
@@ -180,7 +180,7 @@ export const useMarketStore = defineStore('market', () => {
       description: 'Fern hanging baskets, hibiscus, and starter bedding plants.', 
       icon: '🌻',
       badge: 'Porch Ready',
-      image: 'https://images.unsplash.com/photo-1507502707541-f369a3b18502?auto=format&fit=crop&w=600&q=80'
+      image: 'https://images.unsplash.com/photo-1494336877155-7fb9c6984f0a?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
     }
   ])
 
