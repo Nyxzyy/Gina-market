@@ -99,18 +99,18 @@ const resetForm = () => {
 
         <!-- Map & Contact Form -->
         <div class="interactive-column">
-          <!-- Illustrative Map Block -->
+          <!-- Real Google Map Embed -->
           <div class="map-card glass-card">
-            <div class="mock-map">
-              <div class="map-grid-lines"></div>
-              <div class="highway-hwy31">Highway 31</div>
-              <div class="road-snowrogers">Snow Rogers Road</div>
-              <div class="highway-i65">I-65 Exit</div>
-              <div class="map-pin">
-                <span class="pin-dot">🌿</span>
-                <span class="pin-pulse"></span>
-                <div class="pin-tooltip">Gina's Market</div>
-              </div>
+            <div class="map-iframe-container">
+              <iframe 
+                width="100%" 
+                height="280" 
+                style="border:0;" 
+                loading="lazy" 
+                allowfullscreen 
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=2531%20Snow%20Rogers%20Road,%20Gardendale,%20AL%2035071&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              ></iframe>
             </div>
             <a href="https://maps.google.com/?q=2531+Snow+Rogers+Road,+Gardendale,+AL+35071" target="_blank" rel="noopener noreferrer" class="btn btn-secondary w-full" id="btn-contact-external-map">
               Open in Google Maps
@@ -336,121 +336,17 @@ const resetForm = () => {
   gap: 16px;
 }
 
-.mock-map {
-  background-color: var(--color-bg-secondary);
-  height: 240px;
+.map-iframe-container {
+  width: 100%;
+  height: 280px;
   border-radius: var(--radius-sm);
-  position: relative;
   overflow: hidden;
   border: 1px solid var(--color-border);
-}
-
-.map-grid-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.highway-hwy31 {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 48px;
-  background-color: rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  writing-mode: vertical-rl;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-text-secondary);
-}
-
-.road-snowrogers {
-  position: absolute;
-  top: 60%;
-  left: 0;
-  right: 0;
-  height: 36px;
-  background-color: rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-text-secondary);
-}
-
-.highway-i65 {
-  position: absolute;
-  left: 10%;
-  top: 20%;
-  padding: 6px;
-  background-color: var(--color-bg-tertiary);
-  border-radius: var(--radius-sm);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  border: 1px dashed var(--color-border);
-}
-
-.map-pin {
-  position: absolute;
-  left: calc(50% + 24px);
-  top: calc(60% - 18px);
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-}
-
-.pin-dot {
-  font-size: 28px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-  animation: bounce 2s infinite;
-}
-
-.pin-pulse {
-  position: absolute;
-  bottom: -4px;
-  width: 12px;
-  height: 6px;
-  background: rgba(42, 75, 55, 0.4);
-  border-radius: 50%;
-  transform: scale(1);
-  animation: pulse 2s infinite;
-}
-
-.pin-tooltip {
-  background-color: var(--color-brand);
-  color: var(--color-text-light);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  margin-top: 4px;
-  white-space: nowrap;
   box-shadow: var(--shadow-sm);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
+.map-iframe-container iframe {
+  display: block;
 }
 
 .form-card {

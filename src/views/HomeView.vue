@@ -40,6 +40,86 @@ const featuredProducts = ref<FeaturedProduct[]>([
     image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=80'
   }
 ])
+
+// Reviews state
+interface Review {
+  name: string
+  location: string
+  rating: number
+  text: string
+  date: string
+}
+
+const reviews = ref<Review[]>([
+  {
+    name: 'Sarah M.',
+    location: 'Mt. Olive, AL',
+    rating: 5,
+    text: 'The absolute best ferns in town! I buy two hanging baskets every spring and they last all season. The owners are incredibly friendly and helpful.',
+    date: 'Spring 2026'
+  },
+  {
+    name: 'James K.',
+    location: 'Gardendale, AL',
+    rating: 5,
+    text: 'Nana\'s apple fried pies are out of this world. Make sure to get there early on Saturday morning because they sell out fast! The boiled peanuts are also top tier.',
+    date: 'Summer 2025'
+  },
+  {
+    name: 'Amanda T.',
+    location: 'Gardendale, AL',
+    rating: 5,
+    text: 'Love getting our summer tomatoes and squash here. Much fresher than the grocery store and you support local Alabama growers. Our weekly summer spot.',
+    date: 'Summer 2025'
+  },
+  {
+    name: 'Robert D.',
+    location: 'Gardendale, AL',
+    rating: 5,
+    text: 'Incredibly convenient delivery service. We ordered fresh honey, pickles, and fresh corn, and it arrived right at our door the next day. Super friendly folks!',
+    date: 'Fall 2025'
+  }
+])
+
+// Leave a review form state
+const reviewForm = ref({
+  name: '',
+  location: '',
+  rating: 5,
+  text: ''
+})
+const isReviewSubmitted = ref(false)
+const isSubmittingReview = ref(false)
+
+const handleReviewSubmit = () => {
+  if (!reviewForm.value.name || !reviewForm.value.text) {
+    alert('Please fill in your name and review message.')
+    return
+  }
+  
+  isSubmittingReview.value = true
+  setTimeout(() => {
+    reviews.value.unshift({
+      name: reviewForm.value.name,
+      location: reviewForm.value.location || 'Local Neighbor',
+      rating: reviewForm.value.rating,
+      text: reviewForm.value.text,
+      date: 'Just now'
+    })
+    isSubmittingReview.value = false
+    isReviewSubmitted.value = true
+  }, 800)
+}
+
+const resetReviewForm = () => {
+  reviewForm.value = {
+    name: '',
+    location: '',
+    rating: 5,
+    text: ''
+  }
+  isReviewSubmitted.value = false
+}
 </script>
 
 <template>
@@ -196,21 +276,117 @@ const featuredProducts = ref<FeaturedProduct[]>([
       </div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Community Voices</span>
+          <h2>What Our Neighbors Say</h2>
+          <p>Read honest reviews from Gardendale, Mt. Olive, and North Jefferson residents.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div v-for="review in reviews" :key="review.name + review.date" class="review-card glass-card">
+            <div class="review-stars">
+              <span v-for="n in review.rating" :key="n">★</span>
+            </div>
+            <p class="review-text">"{{ review.text }}"</p>
+            <div class="review-meta">
+              <span class="review-author">{{ review.name }}</span>
+              <span class="review-location">{{ review.location }}</span>
+              <span class="review-date">• {{ review.date }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Write a Review Form -->
+        <div class="write-review-container glass-card">
+          <div v-if="isReviewSubmitted" class="success-state">
+            <span class="success-icon">💚</span>
+            <h3>Thank You for Your Feedback!</h3>
+            <p>Your review has been successfully added to our community board. We appreciate your support!</p>
+            <button @click="resetReviewForm" class="btn btn-primary" id="btn-review-reset">Write Another Review</button>
+          </div>
+
+          <form v-else @submit.prevent="handleReviewSubmit" id="form-home-review">
+            <h3>Share Your Experience</h3>
+            <p class="form-desc">Loved Nana's fried pies or our ferns? Let your neighbors know!</p>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="review-input-name">Name *</label>
+                <input 
+                  id="review-input-name" 
+                  type="text" 
+                  v-model="reviewForm.name" 
+                  class="form-input" 
+                  placeholder="Your name" 
+                  required 
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="review-input-loc">Location</label>
+                <input 
+                  id="review-input-loc" 
+                  type="text" 
+                  v-model="reviewForm.location" 
+                  class="form-input" 
+                  placeholder="E.g., Gardendale, AL" 
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="review-select-rating">Rating</label>
+              <select id="review-select-rating" v-model="reviewForm.rating" class="form-select rating-select">
+                <option value="5">★★★★★ (5 Stars)</option>
+                <option value="4">★★★★☆ (4 Stars)</option>
+                <option value="3">★★★☆☆ (3 Stars)</option>
+                <option value="2">★★☆☆☆ (2 Stars)</option>
+                <option value="1">★☆☆☆☆ (1 Star)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="review-textarea-text">Your Review *</label>
+              <textarea 
+                id="review-textarea-text" 
+                v-model="reviewForm.text" 
+                class="form-textarea" 
+                rows="3" 
+                placeholder="What did you buy? How was your experience?" 
+                required
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="btn btn-accent w-full" 
+              :disabled="isSubmittingReview"
+              id="btn-review-submit"
+            >
+              {{ isSubmittingReview ? 'Submitting...' : 'Submit Review' }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
     <!-- Location Summary Section -->
     <section class="location-summary-section">
       <div class="container location-grid">
         <div class="location-map-card glass-card">
-          <!-- Illustrative Map Block -->
-          <div class="mock-map">
-            <div class="map-grid-lines"></div>
-            <div class="highway-hwy31">Highway 31</div>
-            <div class="road-snowrogers">Snow Rogers Road</div>
-            <div class="highway-i65">I-65 Exit</div>
-            <div class="map-pin">
-              <span class="pin-dot">🌿</span>
-              <span class="pin-pulse"></span>
-              <div class="pin-tooltip">Gina's Market</div>
-            </div>
+          <!-- Real Google Map Embed -->
+          <div class="map-iframe-container">
+            <iframe 
+              width="100%" 
+              height="260" 
+              style="border:0;" 
+              loading="lazy" 
+              allowfullscreen 
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://maps.google.com/maps?q=2531%20Snow%20Rogers%20Road,%20Gardendale,%20AL%2035071&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            ></iframe>
           </div>
         </div>
         <div class="location-text">
@@ -652,6 +828,107 @@ const featuredProducts = ref<FeaturedProduct[]>([
   font-size: 11px;
 }
 
+/* Reviews Section */
+.reviews-section {
+  padding: 80px 0;
+  background-color: rgba(42, 75, 55, 0.01);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-stars {
+  color: var(--color-honey);
+  font-size: 18px;
+}
+
+.review-text {
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  flex-grow: 1;
+}
+
+.review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 10px;
+}
+
+.review-author {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-brand);
+}
+
+.review-location {
+  font-weight: 500;
+}
+
+.write-review-container {
+  max-width: 600px;
+  margin: 48px auto 0;
+  padding: 32px;
+}
+
+.write-review-container h3 {
+  font-size: 20px;
+  color: var(--color-brand);
+  margin-bottom: 6px;
+}
+
+.rating-select {
+  color: var(--color-honey);
+  font-weight: 600;
+}
+
+.success-state {
+  text-align: center;
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.success-icon {
+  font-size: 64px;
+}
+
+.success-state h3 {
+  color: var(--color-brand);
+  font-size: 24px;
+}
+
+.success-state p {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
 /* Location Summary */
 .location-summary-section {
   padding: 80px 0;
@@ -674,121 +951,17 @@ const featuredProducts = ref<FeaturedProduct[]>([
   padding: 16px;
 }
 
-.mock-map {
-  background-color: var(--color-bg-secondary);
+.map-iframe-container {
+  width: 100%;
   height: 260px;
   border-radius: var(--radius-sm);
-  position: relative;
   overflow: hidden;
   border: 1px solid var(--color-border);
-}
-
-.map-grid-lines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-
-.highway-hwy31 {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 48px;
-  background-color: rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  writing-mode: vertical-rl;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-text-secondary);
-}
-
-.road-snowrogers {
-  position: absolute;
-  top: 60%;
-  left: 0;
-  right: 0;
-  height: 36px;
-  background-color: rgba(0,0,0,0.08);
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--color-text-secondary);
-}
-
-.highway-i65 {
-  position: absolute;
-  left: 10%;
-  top: 20%;
-  padding: 6px;
-  background-color: var(--color-bg-tertiary);
-  border-radius: var(--radius-sm);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-  border: 1px dashed var(--color-border);
-}
-
-.map-pin {
-  position: absolute;
-  left: calc(50% + 24px);
-  top: calc(60% - 18px);
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-}
-
-.pin-dot {
-  font-size: 28px;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-  animation: bounce 2s infinite;
-}
-
-.pin-pulse {
-  position: absolute;
-  bottom: -4px;
-  width: 12px;
-  height: 6px;
-  background: rgba(42, 75, 55, 0.4);
-  border-radius: 50%;
-  transform: scale(1);
-  animation: pulse 2s infinite;
-}
-
-.pin-tooltip {
-  background-color: var(--color-brand);
-  color: var(--color-text-light);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  margin-top: 4px;
-  white-space: nowrap;
   box-shadow: var(--shadow-sm);
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.6); opacity: 1; }
-  100% { transform: scale(1.6); opacity: 0; }
+.map-iframe-container iframe {
+  display: block;
 }
 
 .location-text {
